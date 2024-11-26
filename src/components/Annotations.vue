@@ -57,12 +57,17 @@ const handleEdit = (annotation, index) => {
 </script>
 
 <template>
-    <div class=" bg-white rounded-2xl overflow-hidden w-full shadow-2xl">
+    <div class=" bg-white rounded-2xl overflow-hidden w-full h-[650px] shadow-2xl">
         <div class="bg-mainPurple p-2">
             <h1 class="text-center font-bold text-white">All Annotations</h1>
         </div>
 
-        <div class="mt-4 p-4 grid grid-cols-1 md:grid-cols-2 gap-4 max-h-[595px] overflow-y-scroll">
+        <div v-if="annotationsFiltered.length <= 0" class="flex mt-2 p-6 gap-4 h-[600px] justify-center items-center">
+            <p class="font-bold text-2xl text-mainBlack">No Annotations!</p>
+        </div>
+
+        <div v-else class="mt-4 p-4 grid grid-cols-1 md:grid-cols-2 gap-4 max-h-[595px] overflow-y-scroll">
+
             <div v-for="(annotation, index) in annotationsFiltered"
                 :class="[annotation.priority ? 'border-mainPurple' : 'border-mainBlack' , 'overflow-hidden relative bg-gray-100 flex flex-col items-center rounded-2xl border-2']">
 
